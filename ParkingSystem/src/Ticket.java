@@ -111,13 +111,13 @@ public class Ticket {
 		return slotTypeCost;   
 	}
 	
-	public void displayTicket(){
+	public void displayTicket(double cost){
 		System.out.println("\n");
 		System.out.println("---------------------- Ticket Generation ------------------------\n");
 		System.out.println("Ticket Serial No. : " + getTicketNo());
 		System.out.println("Entry Time : " + getEntryDate() + "  " + getEntryTime());
 		System.out.println("Expiry Time : " + getExpiryDate() + "  " + getExpiryTime());
-		System.out.println("Total Cost : " + generateCost());
+		System.out.println("Total Cost : " + cost);
 	}
 
 }

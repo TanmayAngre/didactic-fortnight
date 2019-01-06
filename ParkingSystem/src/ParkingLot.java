@@ -2,6 +2,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Properties;
 
 
 public class ParkingLot {
@@ -13,6 +14,7 @@ public class ParkingLot {
 		}
 		public void run(){
 			getSlotAvailable().add(s);
+			System.out.println(s + " " + s.getSlotType());
 		}
 	}
 	
@@ -74,7 +76,7 @@ public class ParkingLot {
 	
 	public Slot emptySlot(Vehicle v, Properties p){
 		//code for isAvailableSlot() for vehicle v...
-		System.out.println(p.getProperty(v.getType()));
+		System.out.println((v.getType()));
 		for(Slot slot:slotAvailable){
 				
 				if(slot.getSlotType() == Integer.parseInt(p.getProperty(v.getType())) && slot.getAvailability()){

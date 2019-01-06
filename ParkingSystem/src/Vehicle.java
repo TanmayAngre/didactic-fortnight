@@ -4,7 +4,7 @@ abstract class Vehicle {
 
 	private String model;
 	private String loc;
-	private String type;  //1,2,3...
+	private String type;  
 	
 	public Vehicle(String model, String loc, String type) {
 		super();
