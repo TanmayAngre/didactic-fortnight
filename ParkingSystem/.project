@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>log4j</name>
+			<type>2</type>
+			<location>E:/didactic-fortnight/ParkingSystem/log4j</location>
+		</link>
+	</linkedResources>
 </projectDescription>

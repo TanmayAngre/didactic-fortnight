@@ -16,6 +16,20 @@ public class Slot {
 		//isAvailable = i;
 	}
 	
+	public boolean equals(Object o){
+		if(o==this)
+			return true;
+		if(!(o instanceof Slot))
+			return false;
+		Slot s =(Slot)o;
+		return s.slotNo == this.slotNo;
+	}
+	
+	public int hashCode(){
+		int result = 17;
+		return (31*result + slotNo);
+	}
+	
 	public int getFloor(){
 		return floor;
 	}
