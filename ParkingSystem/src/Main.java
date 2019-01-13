@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 import java.io.*;
 
@@ -207,7 +209,34 @@ public class Main {
 		//double total = tic.generateCost();
 		v.display(p);
 		tic.displayTicket(cost);
-		System.out.println("Enter 1 to continue...");
+		System.out.println("Press 2 to exit Parking Lot menu...");
+		ch = sc.next();
+		if(ch.equals("2")){
+			System.out.println("Enter ticket number");
+			long number = sc.nextLong();
+			//can do multithreading to deal with removing vehicle other than the latest one
+			tic.setExpiryDate(LocalDate.now());
+			tic.setExpiryTime(LocalTime.now());
+			try{
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkSystem","root","");
+				PreparedStatement sp = con.prepareStatement("SET GLOBAL event_scheduler = 1;");
+				System.out.println(sp.executeUpdate());
+				asd = "del"+tic.getTicketNo();
+				PreparedStatement st1 = con.prepareStatement("DELETE FROM vehicleEntry WHERE ticketID = ?;");
+				st1.setLong(1, number);
+				System.out.println(st1.executeUpdate());
+				System.out.println("Deleted at current timestamp");
+				con.close();
+			}
+			catch(Exception e){
+				System.out.println(e);
+			}
+			pl.addSlotAfter(tic,slot);
+		}
+		
+		System.out.println("Enter 1 to enter another vehicle...");
+		System.out.println(slot.getAvailability());
 		ch = sc.next();
 		}while(ch.equals("1"));
 		sc.close();

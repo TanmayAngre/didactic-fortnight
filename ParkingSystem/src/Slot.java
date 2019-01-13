@@ -41,6 +41,24 @@ public class Slot {
 	public boolean getAvailability(){
 		return isAvailable;
 	}
+	
+	
+
+	/*public boolean isAvailable() {
+		return isAvailable;
+	}*/
+
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+
+	public void setFloor(int floor) {
+		this.floor = floor;
+	}
+
+	public void setSlotType(int slotType) {
+		this.slotType = slotType;
+	}
 
 	public int getSlotNo() {
 		return slotNo;

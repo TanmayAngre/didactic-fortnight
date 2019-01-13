@@ -8,7 +8,7 @@ public class FourMini extends Vehicle {
 	public FourMini(String model, String pl, String type, int wheels) {
 		super(model, pl, type);
 		this.wheels = wheels;
-		System.out.println("2 wheeler created");
+		System.out.println("Mini Four created");
 	}
 
 	public int getWheels() {

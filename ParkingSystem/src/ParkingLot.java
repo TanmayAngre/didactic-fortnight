@@ -2,19 +2,28 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.Properties;
 
 
 public class ParkingLot {
 
 	class timerTask extends TimerTask{
 		Slot s;
-		timerTask(Slot s){
+		ArrayList<Slot> as;
+		timerTask(Slot s, ArrayList<Slot> as){
 			this.s = s;
+			this.as = as;
 		}
 		public void run(){
-			getSlotAvailable().add(s);
-			System.out.println(s + " " + s.getSlotType());
+			if(!as.contains(s)){
+				getSlotAvailable().add(s);
+				s.setAvailable(true);
+				System.out.println("Slot:" + s + " " + s.getSlotType() + "\nAdded");
+				System.out.println(s.getAvailability());
+			}
+			else{
+				System.out.println("Already removed");
+				System.out.println(s.getAvailability());
+			}
 		}
 	}
 	
@@ -81,6 +90,7 @@ public class ParkingLot {
 				
 				if(slot.getSlotType() == Integer.parseInt(p.getProperty(v.getType())) && slot.getAvailability()){
 					slotAvailable.remove(slot);
+					slot.setAvailable(false);
 					return slot;
 				}
 		}
@@ -97,7 +107,9 @@ public class ParkingLot {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		timer.schedule(new timerTask(s), date);
+		timer.schedule(new timerTask(s,slotAvailable), date);
 		return true;
 	}
+	
+	
 }

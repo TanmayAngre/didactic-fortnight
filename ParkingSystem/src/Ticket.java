@@ -83,7 +83,7 @@ public class Ticket {
 		int serviceDays = getTotalParkTime()/24;
 		int plusServiceTime = getTotalParkTime()%24;
 		setExpiryDate(getEntryDate().plusDays(serviceDays));
-		setExpiryTime(getEntryTime().plusHours(plusServiceTime));
+		setExpiryTime(getEntryTime().plusMinutes(plusServiceTime));
 		int expiryH = getExpiryTime().getHour();
 		if(expiryH < entryH)
 			setExpiryDate(getExpiryDate().plusDays(1));
@@ -119,5 +119,9 @@ public class Ticket {
 		System.out.println("Expiry Time : " + getExpiryDate() + "  " + getExpiryTime());
 		System.out.println("Total Cost : " + cost);
 	}
+	
+	/*public Ticket returnRef(long ticNo){
+		return this;
+	}*/
 
 }

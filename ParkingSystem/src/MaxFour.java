@@ -8,7 +8,7 @@ public class MaxFour extends Vehicle {
 	public MaxFour(String model, String pl, String type, int wheels) {
 		super(model, pl, type);
 		this.wheels = wheels;
-		System.out.println("Mini 4 wheeler created");
+		System.out.println("Max 4 wheeler created");
 	}
 
 	public int getWheels() {
