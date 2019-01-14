@@ -115,9 +115,15 @@ public class Main {
 		String ch = null;
 		do{
 		String asd = null;	
-		System.out.println("\nEnter the details of your vehicle... ");
-		System.out.println("\nEnter the model name : ");
-		String m = sc.next();
+		System.out.print("\nEnter the details of your vehicle... ");
+		System.out.print("\nEnter the model name : ");
+		
+		String m = sc.nextLine();
+		if(m.equals(""))
+			m = sc.nextLine();
+		System.out.println("m: " + m);
+		//while(m==null)
+			//m = sc.nextLine();
 		String t = null;
 		do{
 			System.out.println("\nEnter the type of vehicle : (twowheeler/minifour/maxfour)");

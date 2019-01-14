@@ -15,7 +15,7 @@ public class ParkingLot {
 		}
 		public void run(){
 			if(!as.contains(s)){
-				getSlotAvailable().add(s);
+				getSlotAvailable().add(s.getSlotNo(),s);
 				s.setAvailable(true);
 				System.out.println("Slot:" + s + " " + s.getSlotType() + "\nAdded");
 				System.out.println(s.getAvailability());
