@@ -3,13 +3,13 @@ import java.util.Properties;
 abstract class Vehicle {
 
 	private String model;
-	private String loc;
+	private String plateNo;
 	private String type;  
 	
-	public Vehicle(String model, String loc, String type) {
+	public Vehicle(String model, String plateNo, String type) {
 		super();
 		this.model = model;
-		this.loc = loc;
+		this.plateNo = plateNo;
 		this.type = type;
 		System.out.println("vehicle created");
 	}
@@ -30,12 +30,12 @@ abstract class Vehicle {
 		this.type = type;
 	}
 	
-	public String getLoc() {
-		return loc;
+	public String getPlateNo() {
+		return plateNo;
 	}
 
-	public void setLoc(String loc) {
-		this.loc = loc;
+	public void setPlsteNo(String plateNo) {
+		this.plateNo = plateNo;
 	}
 
 	public abstract void display(Properties p);

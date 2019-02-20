@@ -38,7 +38,7 @@ public class Slot {
 		return slotType;
 	}
 	
-	public boolean getAvailability(){
+	public boolean isAvailable(){
 		return isAvailable;
 	}
 	
@@ -48,7 +48,7 @@ public class Slot {
 		return isAvailable;
 	}*/
 
-	public void setAvailable(boolean isAvailable) {
+	public void setIsAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 

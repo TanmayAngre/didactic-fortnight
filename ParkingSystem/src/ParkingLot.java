@@ -6,39 +6,20 @@ import java.util.*;
 
 public class ParkingLot {
 
-	class timerTask extends TimerTask{
-		Slot s;
-		ArrayList<Slot> as;
-		timerTask(Slot s, ArrayList<Slot> as){
-			this.s = s;
-			this.as = as;
-		}
-		public void run(){
-			if(!as.contains(s)){
-				getSlotAvailable().add(s.getSlotNo(),s);
-				s.setAvailable(true);
-				System.out.println("Slot:" + s + " " + s.getSlotType() + "\nAdded");
-				System.out.println(s.getAvailability());
-			}
-			else{
-				System.out.println("Already removed");
-				System.out.println(s.getAvailability());
-			}
-		}
-	}
-	
 	private String location;
 	private int floors;
 	private int totalSlots;
-	private ArrayList<Slot> slotAvailable;
+	private ArrayList<Slot> slotAvailableList;
+	private ArrayList<Slot> slotFilledList;
 
 	public ParkingLot(String location, int floors, int totalSlots,
-			ArrayList<Slot> slotAvailable) {
+			ArrayList<Slot> slotAvailable, ArrayList<Slot> slotFilled) {
 		super();
 		this.location = location;
 		this.floors = floors;
 		this.totalSlots = totalSlots;
-		this.slotAvailable = slotAvailable;
+		this.slotAvailableList = slotAvailable;
+		this.slotFilledList = slotFilled;
 	}
 	
 	public String getLocation() {
@@ -65,12 +46,20 @@ public class ParkingLot {
 		this.totalSlots = totalSlots;
 	}
 
-	public ArrayList<Slot> getSlotAvailable() {
-		return slotAvailable;
+	public ArrayList<Slot> getSlotAvailableList() {
+		return slotAvailableList;
 	}
 
-	public void setSlotAvailable(ArrayList<Slot> slotAvailable) {
-		this.slotAvailable = slotAvailable;
+	public void setSlotAvailableList(ArrayList<Slot> slotAvailable) {
+		this.slotAvailableList = slotAvailable;
+	}
+	
+	public ArrayList<Slot> getSlotFilledList() {
+		return slotFilledList;
+	}
+
+	public void setSlotFilledList(ArrayList<Slot> slotFilled) {
+		this.slotFilledList = slotFilled;
 	}
 
 	/*ParkingLot(String l, int f, int t){
@@ -83,33 +72,5 @@ public class ParkingLot {
 		slotAvailable.add(new Slot(1, 3));
 	}*/
 	
-	public Slot emptySlot(Vehicle v, Properties p){
-		//code for isAvailableSlot() for vehicle v...
-		System.out.println((v.getType()));
-		for(Slot slot:slotAvailable){
-				
-				if(slot.getSlotType() == Integer.parseInt(p.getProperty(v.getType())) && slot.getAvailability()){
-					slotAvailable.remove(slot);
-					slot.setAvailable(false);
-					return slot;
-				}
-		}
-		return null;
-	}
-	
-	public boolean addSlotAfter(Ticket t, Slot s){
-		Timer timer = new Timer();
-		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = null;
-		try {
-			date = dateFormatter .parse(t.getExpiryDate() + " " + t.getExpiryTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		timer.schedule(new timerTask(s,slotAvailable), date);
-		return true;
-	}
-	
-	
 }
+
